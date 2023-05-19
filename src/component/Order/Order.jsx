@@ -4,17 +4,24 @@ import './Order.css'
 import { useLoaderData } from 'react-router-dom';
 import Cart from '../Cart/Cart';
 import OrderProductPreview from '../orderProductPreview/OrderProductPreview';
-import { removeFromDb } from '../../utilities/fakedb';
+import { deleteShoppingCart, removeFromDb } from '../../utilities/fakedb';
 
 const Order = () => {
     const products = useLoaderData();
 
     const [cart, setCart] = useState(products);
 
+    // clear single item from cart function 
     const handleCartFromOrder = (id) => {
         const remainingOrder = cart.filter(p => p.id !== id);
         removeFromDb(id);
         setCart(remainingOrder);
+    }
+
+    // clear full cart that all cart item function 
+    const handleClearCart = () => {
+        setCart([]);
+        deleteShoppingCart();
     }
 
     return (
@@ -27,7 +34,7 @@ const Order = () => {
                     }
                 </div>
                 <div className="cart-details">
-                    <Cart cart={cart}></Cart>
+                    <Cart handleClearCart={handleClearCart} cart={cart}></Cart>
                 </div>
             </div>
         </>

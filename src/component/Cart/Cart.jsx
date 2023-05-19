@@ -2,10 +2,12 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import './Cart.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrashCan, faCalendarCheck } from '@fortawesome/free-solid-svg-icons'
 
 const Cart = (props) => {
     // const cart = props.cart; //option 1
-    const { cart } = props;   //option 2
+    const { cart, handleClearCart } = props;   //option 2
 
     let totalPrice = 0;
     let totalShipping = 0;
@@ -32,6 +34,14 @@ const Cart = (props) => {
             <p>Total Shipping: ${totalShipping} </p>
             <p>Tax: ${taxAmount}</p>
             <h5>Grand Total: ${grandTotal}</h5>
+            <button onClick={handleClearCart} className='clearCartBtn'>
+                <span>Clear Cart</span>
+                <span> <FontAwesomeIcon icon={faTrashCan} /></span>
+            </button>
+            <button className='check-out-btn'>
+                <span>Proceed CheckOut</span>
+                <span> <FontAwesomeIcon icon={faCalendarCheck} /></span>
+            </button>
         </div>
     );
 };
