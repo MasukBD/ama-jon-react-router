@@ -2,6 +2,8 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import './orderProductPreview.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrashCan } from '@fortawesome/free-solid-svg-icons'
 
 const OrderProductPreview = ({ product }) => {
     const { img, name, quantity, price, shipping } = product;
@@ -16,6 +18,9 @@ const OrderProductPreview = ({ product }) => {
                     <p>Shipping cost: {shipping}</p>
                 </div>
             </div>
+            <span className='tras-can'>
+                <FontAwesomeIcon icon={faTrashCan} />
+            </span>
         </div>
     );
 };
