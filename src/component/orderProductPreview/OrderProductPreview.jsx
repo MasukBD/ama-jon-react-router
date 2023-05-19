@@ -5,8 +5,8 @@ import './orderProductPreview.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashCan } from '@fortawesome/free-solid-svg-icons'
 
-const OrderProductPreview = ({ product }) => {
-    const { img, name, quantity, price, shipping } = product;
+const OrderProductPreview = ({ product, handleCart }) => {
+    const { img, name, quantity, price, shipping, id } = product;
     return (
         <div className='order-product-details'>
             <div className='element-details'>
@@ -18,7 +18,7 @@ const OrderProductPreview = ({ product }) => {
                     <p>Shipping cost: {shipping}</p>
                 </div>
             </div>
-            <span className='tras-can'>
+            <span onClick={() => handleCart(id)} className='tras-can'>
                 <FontAwesomeIcon icon={faTrashCan} />
             </span>
         </div>
