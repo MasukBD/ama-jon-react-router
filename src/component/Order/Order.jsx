@@ -1,10 +1,12 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import './Order.css'
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import Cart from '../Cart/Cart';
 import OrderProductPreview from '../orderProductPreview/OrderProductPreview';
 import { deleteShoppingCart, removeFromDb } from '../../utilities/fakedb';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCalendarCheck } from '@fortawesome/free-solid-svg-icons'
 
 const Order = () => {
     const products = useLoaderData();
@@ -34,7 +36,15 @@ const Order = () => {
                     }
                 </div>
                 <div className="cart-details">
-                    <Cart handleClearCart={handleClearCart} cart={cart}></Cart>
+                    <Cart handleClearCart={handleClearCart} cart={cart}>
+
+                        <Link className='proceed-link' to="/checkout">
+                            <button className='check-out-btn'>
+                                <span>Proceed To CheckOut</span>
+                                <span> <FontAwesomeIcon icon={faCalendarCheck} /></span>
+                            </button>
+                        </Link>
+                    </Cart>
                 </div>
             </div>
         </>

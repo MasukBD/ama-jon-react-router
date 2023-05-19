@@ -7,7 +7,7 @@ import { faTrashCan, faCalendarCheck } from '@fortawesome/free-solid-svg-icons'
 
 const Cart = (props) => {
     // const cart = props.cart; //option 1
-    const { cart, handleClearCart } = props;   //option 2
+    const { cart, handleClearCart, children } = props;   //option 2
 
     let totalPrice = 0;
     let totalShipping = 0;
@@ -38,10 +38,7 @@ const Cart = (props) => {
                 <span>Clear Cart</span>
                 <span> <FontAwesomeIcon icon={faTrashCan} /></span>
             </button>
-            <button className='check-out-btn'>
-                <span>Proceed CheckOut</span>
-                <span> <FontAwesomeIcon icon={faCalendarCheck} /></span>
-            </button>
+            {children}
         </div>
     );
 };

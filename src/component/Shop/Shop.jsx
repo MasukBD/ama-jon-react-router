@@ -4,6 +4,9 @@ import './Shop.css';
 import Product from '../Product/Product';
 import Cart from '../Cart/Cart';
 import { addToDb, deleteShoppingCart, getShoppingCart } from '../../utilities/fakedb';
+import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCalendarCheck } from '@fortawesome/free-solid-svg-icons'
 
 const Shop = () => {
     const [products, setProducts] = useState([]);
@@ -63,7 +66,14 @@ const Shop = () => {
                     </div>
                 </div>
                 <div className="cart-container">
-                    <Cart handleClearCart={handleClearCart} cart={cart}></Cart>
+                    <Cart handleClearCart={handleClearCart} cart={cart}>
+                        <Link className='proceed-link' to="/order">
+                            <button className='check-out-btn'>
+                                <span>Review Order</span>
+                                <span> <FontAwesomeIcon icon={faCalendarCheck} /></span>
+                            </button>
+                        </Link>
+                    </Cart>
                 </div>
             </div>
         </div>
